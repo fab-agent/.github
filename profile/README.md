@@ -1,52 +1,83 @@
-# fab.engineering
+# fab-agent / Fabrika Yazılım
 
-**Self-hosted platform for managing agentic organizations.**
-
-We're building the infrastructure layer that lets companies define, deploy, and govern AI agents as first-class members of their org chart — with policies, skills, approval flows, and human oversight built in from day one.
-
----
-
-## What We're Building
-
-Most companies experimenting with AI agents today are doing it ad-hoc: scattered prompts, no governance, no visibility. We think that's a problem.
-
-`fab.engineering` gives organizations a structured way to run agentic operations:
-
-- **Agent Personnel** — Every AI agent has a name, a role, a department, a responsible human, and a set of skills. It lives in the org chart like anyone else.
-- **Policy Management** — Agents operate within defined policies. Changes go through a review and approval flow before taking effect.
-- **Autonomous Flows** — Scheduled tasks that run agents on a cron, deliver results to the inbox, and keep humans informed without requiring manual triggers.
-- **Task Requests** — Anyone in the org can request an agent for a task. The system routes to the best match based on department and skill, notifies the responsible human, and tracks the outcome.
-- **Change Requests** — Agent configuration changes follow a two-stage approval chain (department head → admin) before being committed to version control.
-- **Inbox** — A unified notification layer where flow results, task completions, and system events land for the right people.
+**Kurumsal yapay zeka altyapısı üretiyor.**  
+İstanbul · [fab.limited](https://fab.limited) · [bilgi@kuntaykunt.com](mailto:bilgi@kuntaykunt.com)
 
 ---
 
-## Design Philosophy
+## Kim Biz?
 
-**Human oversight, not human bottlenecks.** Agents operate autonomously, but every critical action — config changes, new deployments, task execution — has a defined approval path and an audit trail.
+[Fabrika Yazılım Ticaret Limited Şirketi](https://fab.limited), şirketlerin yapay zeka ajanlarını organizasyon şemalarına gerçek anlamda entegre etmelerine yardımcı olmak için kuruldu.
 
-**Self-hosted first.** Companies keep their data, their keys, and their agent configurations on their own infrastructure. No SaaS lock-in.
+Ajanlar birer araç değil — personel. Departmanları var, yöneticileri var, politikaları var, org şemasında yer alıyorlar.
 
-**Org-native.** Agents aren't tools. They're personnel. They belong to departments, have managers, carry policies, and appear in the org chart.
+**Kurucu:** [Kuntay Kunt](https://www.linkedin.com/in/kuntaykunt/) · [x.com/kuntaykunt](https://x.com/kuntaykunt)
 
 ---
 
-## Stack
+## Projeler
 
-| Layer | Technology |
+### [agentic-organization](https://github.com/fab-agent/agentic-organization)
+
+Self-hosted, açık kaynak kurumsal ajan yönetim platformu.
+
+- **AI Onboarding** — Şirketinizi web'de araştırır, soru sorar, dakikalar içinde tam org yapısı oluşturur
+- **Çoklu Sağlayıcı** — Anthropic, OpenAI, Google, Mistral, Qwen — model bağımsız
+- **Otonom Akışlar** — Cron zamanlamalı ajan görevleri; sonuçlar inbox'a düşer
+- **Görev Yönlendirme** — Departman + skill filtreyle en uygun ajana otomatik yönlendirme
+- **Ajan Hafızası** — Oturum özetleri uzun dönem hafızaya kaydedilir; bağlam hiç kaybolmaz
+- **Token Telemetrisi** — Her mesaj için token tüketimi takibi; dashboard'da canlı görünür
+- **Görsel Üretimi** — Qwen Image / DALL-E akışlarda; DashScope task API entegrasyonu
+- **Sosyal Medya** — Instagram Business + WhatsApp Cloud API builtin skill olarak
+- **Güvenlik** — AES-256 key şifrelemesi, JWT, Alembic migration, Nginx rate limiting
+
+```
+Teknoloji: FastAPI · SQLModel · SvelteKit 5 · Tailwind · APScheduler · Docker
+```
+
+**Durum:** Aktif geliştirme — v0.9 (Temmuz 2026)  
+**Lisans:** MIT — Ticari kullanım, fork ve katkı serbesttir.
+
+---
+
+### Odoo Eklentileri *(yakında)*
+
+Fabrika Yazılım, Odoo ERP ekosistemi için kurumsal eklentiler geliştiriyor.
+
+Planlanan alanlar:
+- **MRP 2 / Üretim** — İş emri yönetimi, ürün ağacı (BoM), iş istasyonu takibi
+- **Ajan Entegrasyonu** — Odoo iş akışlarında agentic-organization ajanlarını tetikleme
+- **Raporlama** — Üretim verimliliği ve maliyet analizi eklentileri
+
+Güncellemeler için [bilgi@kuntaykunt.com](mailto:bilgi@kuntaykunt.com) adresine yazabilirsiniz.
+
+---
+
+### İş Geliştirme
+
+Fabrika Yazılım aşağıdaki alanlarda kurumsal danışmanlık ve uygulama hizmetleri sunmaktadır:
+
+| Alan | Kapsam |
 |---|---|
-| Backend | FastAPI · SQLModel · SQLite · APScheduler |
-| Frontend | SvelteKit 5 · Tailwind CSS |
-| AI | Anthropic · OpenAI · Google · xAI (per-agent config) |
-| Version Control | GitHub (Contents API — policy & config sync) |
-| Deployment | Docker · Hetzner |
+| **Agentic Organizasyon Kurulumu** | Şirketiniz için ajan yapısı tasarımı, self-hosted kurulum, ilk akışların tanımlanması |
+| **Odoo Entegrasyonu** | Mevcut Odoo kurulumunuza ajan katmanı eklenmesi |
+| **Özel Ajan Geliştirme** | İş süreçlerinize özel skill, politika ve otonom akış tasarımı |
+| **AI Sağlayıcı Danışmanlığı** | Maliyet-fayda analizi, model seçimi, güvenlik yapılandırması |
+
+**İletişim:** [bilgi@kuntaykunt.com](mailto:bilgi@kuntaykunt.com)  
+**LinkedIn:** [Kuntay Kunt](https://www.linkedin.com/in/kuntaykunt/)  
+**X:** [x.com/kuntaykunt](https://x.com/kuntaykunt)
 
 ---
 
-## Status
+## Tasarım Felsefesi
 
-Active development. Core platform (agent management, departments, flows, inbox, change requests) is functional. Tool use, multi-step reasoning, and agent memory are next.
+**İnsan denetimi, insan darboğazı değil.** Ajanlar otonom çalışır; ancak yapılandırma değişiklikleri, görev onayları ve kritik eylemler her zaman bir insanın onayından geçer.
+
+**Self-hosted önce.** Verileriniz, anahtarlarınız ve ajan yapılandırmalarınız kendi altyapınızda kalır. SaaS bağımlılığı yok.
+
+**Org-native.** Ajanlar bir araç değil, personel. Departmanlara bağlı, yöneticileri olan, politika taşıyan ve org şemasında görünen varlıklar.
 
 ---
 
-<sub>Built by [Fabrika Yazılım](https://fab.limited) · Istanbul</sub>
+<sub>© 2026 Fabrika Yazılım Ticaret Limited Şirketi · İstanbul · [fab.limited](https://fab.limited) · [bilgi@kuntaykunt.com](mailto:bilgi@kuntaykunt.com)</sub>
